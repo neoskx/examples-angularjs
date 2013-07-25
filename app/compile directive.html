@@ -10,7 +10,9 @@
   <body ng-controller="MyCtrl">
     
     <div>
-      {{text}}
+      <input ng-model="name"><br/>
+      <textarea ng-model="html"></textarea><br/>
+      <div compile="html"></div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -20,6 +22,6 @@
       window.angular || document.write('<script src="vendor/angularjs/angular.js"><\/script>');
     </script>
     <script src="./vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="./js/templatescript.js"></script>
+    <script src="./js/compile.js"></script>
   </body>
 </html>

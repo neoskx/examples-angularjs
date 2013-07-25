@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.1/angular.min.js"></script>
+	<meta charset=utf-8 />
+	<title>Service vs Factory vs Provider</title>
+</head>
+<body ng-controller="MyCtrl">
+  <ul>
+    <li ng-repeat="hello in hellos">
+      {{hello}}
+    </li>
+  </ul>
+  
+	<script>
+      
+      var app = angular.module('app',[]);
+      
+      app.service('helloWorldFromService', function(){
+        this.name = "Service";
+        this.sayHello = function(){
+          return 'helloWorldFromService-Hello, '+this.name+'!';
+        };
+      });
+      
+      app.factory('helloWorldFromFactory', function(){
+        return {
+          sayHello: function(){
+            return 'helloWorldFromFactory-Hello, '+this.name+'!';
+          }
+          ,name:'Factory'
+        }
+      });
+      
+      app.provider('helloWorld', function(){
+        this.name = 'Default';
+        
+        this.$get = function(){
+          var name = this.name;
+          return {
+            sayHello: function(){
+              return 'helloWorldFromProvider-Hello,'+name+'!';
+            }
+          }
+        }
+        
+        this.setName = function(name){
+          this.name = name;
+        }
+      });
+      
+      app.config(["helloWorldProvider",function(helloWorldProvider){
+        helloWorldProvider.setName("Provider");
+      }]);
+      
+      function MyCtrl($scope, helloWorldFromService, helloWorldFromFactory, helloWorld){
+        $scope.hellos = [
+          helloWorldFromService.sayHello()
+          ,helloWorldFromFactory.sayHello()
+          ,helloWorld.sayHello()
+        ];
+      }
+      
+	</script>
+
+</body>
+</html>
