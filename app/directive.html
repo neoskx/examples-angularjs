@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="myApp">
   <head>
-    <title>AngularJS Exmaple</title>
+    <title>AngularJS Exmaple - Directive</title>
 
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.css">
@@ -10,9 +10,17 @@
   <body ng-controller="MyCtrl">
     
     <div>
-      <input ng-model="name"><br/>
-      <textarea ng-model="html"></textarea><br/>
-      <div compile="html" type="test"></div>
+      Hello <input ng-model="name"><hr/>
+      &lt;span ng:bind="name"&gt;<span ng:bind="name"></span><br/>
+      &lt;span ng-bind="name"&gt;<span ng-bind="name"></span><br/>
+      &lt;span ng_bind="name"&gt;<span ng_bind="name"></span><br/>
+      &lt;span x-ng-bind="name"&gt;<span x-ng-bind="name"></span><br/>
+      &lt;span data-ng-bind="name"&gt;<span data-ng-bind="name"></span><br/>
+    </div>
+    <hr/>
+    <div>
+      Date format: <input ng-model="format"><hr/>
+      Current time is: <span my-current-time="format" my-passed-time="format" my-future-time="format" ng-bind="currentTime"></span>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -22,6 +30,6 @@
       window.angular || document.write('<script src="vendor/angularjs/angular.js"><\/script>');
     </script>
     <script src="./vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="./js/compile.js"></script>
+    <script src="./js/directive.js"></script>
   </body>
 </html>

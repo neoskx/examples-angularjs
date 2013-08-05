@@ -1,0 +1,89 @@
+var myApp = angular.module('myApp', []);
+myApp.directive('myCurrentTime', ['$timeout','$filter',function($timeout, $filter){
+	// Runs during compile
+	return {
+		name: 'myCurrentTime',
+		priority: 2,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			console.info("myCurrentTime");
+			var timer;
+			function updateTime(){
+				$scope.currentTime = $filter('date')(new Date().getTime(), $scope.format);
+			}
+
+			function updateTimeContinuous(){
+				timer = $timeout(function(){
+					updateTime();
+					updateTimeContinuous();
+				}, 1000);
+			}
+
+			$scope.$watch(iAttrs.myCurrentTime, function(scope, newValue, oldValue) {
+				scope.format = newValue;
+			});
+
+			iElm.bind('$destory', function(){
+				$timeout.cancel(timer);
+			});
+
+			updateTime();
+			updateTimeContinuous();
+		}
+	};
+}]);
+myApp.directive('myPassedTime', [function(){
+	// Runs during compile
+	return {
+		name: 'myPassedTime',
+		// priority: 0,
+		terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			console.info("myPassedTime");
+		}
+	};
+}]);
+
+myApp.directive('myFutureTime', [function(){
+	// Runs during compile
+	return {
+		name: 'myFutureTime',
+		priority: undefined,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			console.info("myFutureTime");
+		}
+	};
+}]);
+
+function MyCtrl($scope){
+	$scope.format= "M/d/yy h:mm:ss a";
+	$scope.name= "AngularJS";
+}

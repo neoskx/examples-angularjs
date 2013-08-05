@@ -22,6 +22,16 @@ myApp.directive('compile', ['$compile', function($compile){
 				iElm.html(newValue);
 				$compile(iElm.contents())($scope);
 			});
+
+			iAttrs.$observe('type', function(value){
+				console.info("$observe, newValue = "+value);
+			});
+
+			$scope.$watch(function(){
+				return iElm[0].getAttribute("type");
+			}, function($scope, newValue, oldValue) {
+				console.info("$watch, newValue = "+newValue);
+			});
 		}
 	};
 }]);
