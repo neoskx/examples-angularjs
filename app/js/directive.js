@@ -1,11 +1,12 @@
 var myApp = angular.module('myApp', []);
-myApp.directive('myCurrentTime', ['$timeout','$filter',function($timeout, $filter){
+
+myApp.directive('currentTime', ['$timeout','$filter',function($timeout, $filter){
 	// Runs during compile
 	return {
-		name: 'myCurrentTime',
+		name: 'currentTime',
 		priority: 2,
 		// terminal: true,
-		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		scope: true, // {} = isolate, true = child, false/undefined = no change
 		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
@@ -15,7 +16,7 @@ myApp.directive('myCurrentTime', ['$timeout','$filter',function($timeout, $filte
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
-			console.info("myCurrentTime");
+			console.info("currentTime");
 			var timer;
 			function updateTime(){
 				$scope.currentTime = $filter('date')(new Date().getTime(), $scope.format);
@@ -28,7 +29,7 @@ myApp.directive('myCurrentTime', ['$timeout','$filter',function($timeout, $filte
 				}, 1000);
 			}
 
-			$scope.$watch(iAttrs.myCurrentTime, function(scope, newValue, oldValue) {
+			$scope.$watch(iAttrs.currentTime, function(scope, newValue, oldValue) {
 				scope.format = newValue;
 			});
 
@@ -41,13 +42,16 @@ myApp.directive('myCurrentTime', ['$timeout','$filter',function($timeout, $filte
 		}
 	};
 }]);
+
 myApp.directive('myPassedTime', [function(){
 	// Runs during compile
 	return {
 		name: 'myPassedTime',
 		// priority: 0,
-		terminal: true,
-		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// terminal: true,
+		scope: {
+			passedTime:'@myPassedTime'
+		}, // {} = isolate, true = child, false/undefined = no change
 		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
@@ -62,13 +66,38 @@ myApp.directive('myPassedTime', [function(){
 	};
 }]);
 
+myApp.directive('myCurrentTime', [function(){
+	// Runs during compile
+	return {
+		name: 'myCurrentTime',
+		priority: undefined,
+		// terminal: true,
+		scope: {
+			currentTime:'=myCurrentTime'
+		}, // {} = isolate, true = child, false/undefined = no change
+		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			console.info("myCurrentTime");
+		}
+	};
+}]);
+
 myApp.directive('myFutureTime', [function(){
 	// Runs during compile
 	return {
 		name: 'myFutureTime',
 		priority: undefined,
 		// terminal: true,
-		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		scope: {
+			futureTime:'&myFutureTime'
+		}, // {} = isolate, true = child, false/undefined = no change
 		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
@@ -86,4 +115,7 @@ myApp.directive('myFutureTime', [function(){
 function MyCtrl($scope){
 	$scope.format= "M/d/yy h:mm:ss a";
 	$scope.name= "AngularJS";
+	$scope.name1= "Name1";
+	$scope.name2= "Name2";
+	$scope.name3= "Name3";
 }

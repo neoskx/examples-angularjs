@@ -20,7 +20,43 @@
     <hr/>
     <div>
       Date format: <input ng-model="format"><hr/>
-      Current time is: <span my-current-time="format" my-passed-time="format" my-future-time="format" ng-bind="currentTime"></span>
+      Current time is: <span current-time="format" ng-bind="currentTime"></span>
+    </div>
+
+    <hr/>
+    <h4>Parent Scope of directive scope</h4>
+    <ol>
+      <li>
+        <strong>@ or @attr</strong><br/>
+        <input ng-model="name1">
+      </li>
+      <li>
+        <strong>= or =attr</strong><br/>
+        <input ng-model="name2">
+      </li>
+      <li>
+        <strong>& or &attr</strong><br/>
+        <input ng-model="name3">
+      </li>
+    </ol>
+    <div>
+      <h4>Directive Scope</h4>
+      <ol>
+        <li>
+          <strong>@ or @attr</strong><br/>
+          <input my-passed-time="{{name1}}" type="input" ng-model="passedTime">
+          <small>Parent scope will effect directive scope, but directive scope doesn't effect parent scope</small>
+        </li>
+        <li>
+          <strong>= or =attr</strong><br/>
+          <input my-current-time="name2" type="input" ng-model="currentTime">
+          <small>bi-directional</small>
+        </li>
+        <li>
+          <strong>& or &attr</strong><br/>
+          <input my-future-time="name3 = name3 + ' end';" type="input" ng-model="futureTime">
+        </li>
+      </ol>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
