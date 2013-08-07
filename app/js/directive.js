@@ -62,6 +62,9 @@ myApp.directive('myPassedTime', [function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			console.info("myPassedTime");
+			iAttrs.$observe('myPassedTime', function(value){
+				console.info(value);
+			});
 		}
 	};
 }]);
@@ -85,6 +88,9 @@ myApp.directive('myCurrentTime', [function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			console.info("myCurrentTime");
+			iAttrs.$observe('myCurrentTime', function(value){
+				console.info(value);
+			});
 		}
 	};
 }]);
@@ -108,6 +114,32 @@ myApp.directive('myFutureTime', [function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			console.info("myFutureTime");
+			iAttrs.$observe('myFutureTime', function(value){
+				console.info(value);
+			});
+		}
+	};
+}]);
+
+myApp.directive('dialog', ['', function(){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclue) {
+
+		},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			
 		}
 	};
 }]);

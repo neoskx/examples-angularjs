@@ -38,7 +38,7 @@
         <strong>& or &attr</strong><br/>
         <input ng-model="name3">
       </li>
-    </ol>
+    </ol>folder
     <div>
       <h4>Directive Scope</h4>
       <ol>
@@ -57,6 +57,14 @@
           <input my-future-time="name3 = name3 + ' end';" type="input" ng-model="futureTime">
         </li>
       </ol>
+    </div>
+
+    <hr/>
+    <div>
+      <button ng-click="show=true">show</button>
+      <dialog title="Hello {{name}}" visible="show" on-cancel="show=false;" on-ok="show=false;">
+        Body goes here: {{name}} is {{title}}
+      </dialog>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>

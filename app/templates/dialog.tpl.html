@@ -1,0 +1,10 @@
+<div ng-show="visible">
+	<header>
+		<h3>{{title}}</h3>
+	</header>
+	<div ng-transclude></div>
+	<footer>
+		<button ng-click="onCancel()">Cancel</button>
+		<button ng-click="onOK()">OK</button>
+	</footer>
+</div>
