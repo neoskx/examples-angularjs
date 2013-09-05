@@ -121,16 +121,13 @@ myApp.directive('myFutureTime', [function(){
 	};
 }]);
 
-myApp.directive('dialog', ['', function(){
+myApp.directive('newScope', [function(){
 	// Runs during compile
 	return {
 		// name: '',
 		// priority: 1,
 		// terminal: true,
-		// scope: {}, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs, $transclue) {
-
-		},
+		scope: true, // {} = isolate, true = child, false/undefined = no change
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
 		// template: '',
@@ -139,10 +136,80 @@ myApp.directive('dialog', ['', function(){
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
-			
+			// $scope.text = "new scope";
 		}
 	};
 }]);
+
+myApp.directive('isolateScope', [function(){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			// $scope.text = "isolate scope";
+		}
+	};
+}]);
+
+myApp.directive('defaultScope', [function(){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			// $scope.text = "default scope";
+		}
+	};
+}]);
+
+myApp.directive('scopeLoadSequence', [function(){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		// template: '',
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		controller:function(){
+			console.info("scopeLoadSequence: controller");
+		},
+		compile: function(){
+			console.info("scopeLoadSequence: compile");
+			return function(){
+				console.info("scopeLoadSequence: link");
+			}
+		}
+		// link: function($scope, iElm, iAttrs, controller) {
+		// 	// $scope.text = "default scope";
+		// 	console.info("link");
+		// }
+	};
+}]);
+
 
 function MyCtrl($scope){
 	$scope.format= "M/d/yy h:mm:ss a";
@@ -150,4 +217,5 @@ function MyCtrl($scope){
 	$scope.name1= "Name1";
 	$scope.name2= "Name2";
 	$scope.name3= "Name3";
+	$scope.text = "Parent Scope";
 }

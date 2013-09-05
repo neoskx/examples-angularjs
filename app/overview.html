@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Exmaple</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.css">
+    
+  </head>
+  <body ng-controller="MyCtrl">
+    
+    <div>
+      {{text}}
+    </div>
+    <p ng-init="name='World'">Hello {{name}}</p>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script>
+      window.jquery || document.write('<script src="vendor/jquery/jquery-1.10.2.js"><\/script>');
+      window.angular || document.write('<script src="vendor/angularjs/angular.js"><\/script>');
+    </script>
+    <script src="./vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="./js/templatescript.js"></script>
+  </body>
+</html>

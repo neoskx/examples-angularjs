@@ -50,6 +50,7 @@
       });
       
       app.config(["helloWorldProvider",function(helloWorldProvider){
+        console.info("app.config");
         helloWorldProvider.setName("Provider");
       }]);
       
