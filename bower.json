@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-examples",
+  "version": "0.1.0",
+  "devDependencies": {
+    "angular": "~1.0.7",
+    "bootstrap": "~2.3.2",
+    "angular-bootstrap": "~0.3.0"
+  },
+  "homepage": "https://github.com/shaoke/angularjs-examples",
+  "authors": [
+    "blithexu <shaokexu@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
+}

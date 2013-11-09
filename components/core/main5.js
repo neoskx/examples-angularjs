@@ -7,6 +7,7 @@ angular.module('UIComponents',[])
 
 		DirectiveCtrl.prototype.tellName = function(){
 			alert("name:"+this.name+"  version: "+this.version);
+			// alert(this.name);
 		};
 
 		return {

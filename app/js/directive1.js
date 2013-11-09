@@ -7,15 +7,15 @@ myApp.directive('currentTime', ['$timeout','$filter',function($timeout, $filter)
 		priority: 2,
 		// terminal: true,
 		scope: true, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs) {
-			console.info("currentTime controller 1");
+		controller: function($scope, $element, $attrs, $transclue) {
+			console.info("currentTime controller 2");
 		},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
 		// template: '',
 		// templateUrl: '',
 		// replace: true,
-		// transclude: true,
+		transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			console.info("currentTime");

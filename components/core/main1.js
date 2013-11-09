@@ -25,7 +25,7 @@ function Teacher(){
 }
 
 Teacher.prototype = new Person();
-Teacher.prototype.constractor = Teacher;
+Teacher.prototype.constructor = Teacher;
 Teacher.prototype.setMajor = function(major){
 	this.major = major;
 };

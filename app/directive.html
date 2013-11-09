@@ -9,6 +9,10 @@
   </head>
   <body ng-controller="MyCtrl">
     
+    <hr/>
+    <div current-time c-text='name'></div>
+    <hr/>
+
     <div>
       Hello <input ng-model="name"><hr/>
       &lt;span ng:bind="name"&gt;<span ng:bind="name"></span><br/>
@@ -49,13 +53,18 @@
         </li>
         <li>
           <strong>= or =attr</strong><br/>
-          <input my-current-time="name2" type="input" ng-model="currentTime">
+          <input my-current-time="name2" type="input" id="ct1">
           <small>bi-directional</small>
         </li>
         <li>
           <strong>& or &attr</strong><br/>
           <input my-future-time="name3 = name3 + ' end';" type="input" ng-model="futureTime">
         </li>
+        <!-- 
+        <li>
+          <strong>Two Directive</strong><br/>
+          <input my-future-time="name3 = name3 + ' end';" my-current-time="name2" type="input" ng-model="futureTime">
+        </li> -->
       </ol>
     </div>
 
@@ -64,6 +73,21 @@
     </div>
 
     <hr/>
+    <p>This is used to test $compile</p>
+    <div>
+    <my-current-time="name2" text="{{name1}}" id="ct2"></my-current-time>
+    <!-- <div my-current-time="name2" id="ct2"></div> -->
+    </div>
+    <button ng-click="addCurrentTime()">Add Current Time</button>
+
+    <hr/>
+
+    <div isolateScope>
+      <div isolateScope>
+        
+      </div>      
+    </div>
+
     <div>
       <ol>
         <li></li>
@@ -80,5 +104,6 @@
     </script>
     <script src="./vendor/bootstrap/js/bootstrap.js"></script>
     <script src="./js/directive.js"></script>
+    <script src="./js/directive1.js"></script>
   </body>
 </html>

@@ -31,11 +31,11 @@ Person.prototype.saySomeThing = function(word){
 };
 
 function Teacher(id){
-	//Person.call(this,id);
+	Person.call(this,id);
 }
 
 Teacher.prototype = new Person("-1");
-Teacher.prototype.constractor = Teacher;
+Teacher.prototype.constructor = Teacher;
 Teacher.prototype.setMajor = function(major){
 	this.major = major;
 };

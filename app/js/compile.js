@@ -7,15 +7,19 @@ myApp.directive('compile', ['$compile', function($compile){
 		// priority: 1,
 		// terminal: true,
 		// scope: {}, // {} = isolate, true = child, false/undefined = no change
-		// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
+		controller: function($scope, $element, $attrs) {
+			console.group("compile->controller");
+			console.groupEnd();
+		},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-		// template: '',
+		template: '<div> Just for test</div>',
 		// templateUrl: '',
 		// replace: true,
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
+			console.group("compile->link");
 			$scope.$watch(function($scope){
 				return $scope.$eval(iAttrs.compile);
 			}, function(scope, newValue, oldValue) {
@@ -24,14 +28,16 @@ myApp.directive('compile', ['$compile', function($compile){
 			});
 
 			iAttrs.$observe('type', function(value){
-				console.info("$observe, newValue = "+value);
+				console.log("$observe, newValue = "+value);
 			});
 
 			$scope.$watch(function(){
 				return iElm[0].getAttribute("type");
 			}, function($scope, newValue, oldValue) {
-				console.info("$watch, newValue = "+newValue);
+				console.log("$watch, newValue = "+newValue);
 			});
+
+			console.groupEnd();
 		}
 	};
 }]);

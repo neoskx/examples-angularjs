@@ -1,20 +1,25 @@
 <!doctype html>
 <html ng-app="myApp">
   <head>
-    <title>AngularJS Exmaple</title>
+    <title>AngularJS Exmaple - Directive</title>
 
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.css">
     
   </head>
   <body ng-controller="MyCtrl">
-    
+
+    <hr/>
+    <p>This is used to test $compile</p>
     <div>
-      <input ng-model="name"><br/>
-      <textarea ng-model="html"></textarea><br/>
-      <div compile="html" type="test"></div>
+      <!-- <my-current-time="name2" text="{{name1}}" id="ct2"></my-current-time> -->
     </div>
 
+    <!-- <div my-current-time="name2" id="ct2"></div> -->
+
+    <button ng-click="addCurrentTime()">Add Current Time</button>
+
+    <hr/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script>
@@ -22,7 +27,6 @@
       window.angular || document.write('<script src="vendor/angularjs/angular.js"><\/script>');
     </script>
     <script src="./vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="./js/compile.js"></script>
-    <script src="./js/compile.js"></script>
+    <script src="./js/directive.js"></script>
   </body>
 </html>
