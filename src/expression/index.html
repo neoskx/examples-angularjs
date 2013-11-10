@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <title>AngularJS Exmaple - Expression</title>
+
+  <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap-responsive.css">
+  -->
+  <link rel="stylesheet" href="../../vendor/google-code-prettify/src/prettify.css">
+  <link rel="stylesheet" href="./css/main.css"></head>
+<body onload="prettyPrint()">
+
+  <div class="marketing">
+    <h2>AngularJS Exmaple - Expression</h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- Explain -->
+      <div class="span12">
+        <p>
+          Expressions are JavaScript-like code snippets that are usually placed in
+          <a href="/src/binding/index.html">bindings</a>
+          such as {{ expression }}
+        </p>
+        <p>
+          Angular expressions and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">Javascript expressions</a> with following differences:
+        </p>
+        <ul>
+          <li> <b>Attribute Evaluation:</b>
+            evaluation of all properties are against the scope, doing the evaluation, unlike in JavaScript where the expressions are evaluated against the global
+            <code>window</code>
+          </li>
+          <li> <b>Forgiving:</b>
+            expression evaluation is forgiving to undefined and null, unlike in JavaScript, where trying to evaluate undefined properties can generate ReferenceError or TypeError.
+          </li>
+          <li>
+            <b>No Control Flow Statements</b>
+            you cannot do any of the following in angular expression: conditionals, loops, or throw.
+            Open and read <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Statements">Javascript Control Flow</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="span12" ng-app="">
+        <div ng-controller="ExpressionsCtrl" class="row">
+          <div class="span6">
+            <form name="form" novalidate>
+              <div>
+                <label>Attribute Name:</label>
+                <input type="text" style="width:400px" ng-model="attrName" placeholder="Please input an attribute name" required/>
+              </div>
+              <div>
+                <label>Attribute Value:</label>
+                <input type="text" style="width:400px" ng-model="attrValue" placeholder="Please input the value for the attribute name you input before"/>
+              </div>
+              <div>
+                <button type="button" class="btn" ng-disabled="form.$invalid" ng-click="addAttribute()">Add</button>
+                <button type="button" class="btn" ng-disabled="form.$invalid" ng-click="removeAttribute()">Remove</button>
+                <button type="button" class="btn" ng-click="attrValue=null;attrName=null;">Reset</button>
+              </div>
+            </form>
+            <label>The added attributes in $scope</label>
+            <pre style="width:393px;">{{attributes | json}}</pre>
+            <form name="expForm" novalidate>
+              <label>Input expression:</label>
+              <textarea ng-model="expression" name="inputExp" style="width:400px" value="expression" required></textarea>
+              <button type="button" class="btn" ng-disabled="expForm.$invalid" ng-click="addExpression(expForm.inputExp.$viewValue)">Add Expression</button>
+              <button type="button" class="btn" ng-click="expression=null;">Reset</button>
+            </form>
+          </div>
+          <div class="span6">
+            <p style="margin-bottom:-15px">
+              <b>Expressions List:</b>
+            </p>
+            <hr/>
+            <dl ng-repeat="exp in expressions">
+              <dt>{{exp.exp}}</dt>
+              <dd>{{exp.value}}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../vendor/angular/angular.js"></script>
+  <script src="../../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../../vendor/jquery/jquery.js"></script>
+  <script src="../../vendor/bootstrap/docs/assets/js/bootstrap.js"></script>
+  <script src="../../vendor/google-code-prettify/src/prettify.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
