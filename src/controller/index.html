@@ -1,0 +1,63 @@
+<!doctype html>
+ <html ng-app="">
+
+<!-- <html> -->
+<head>
+  <title>AngularJS Exmaple - Controller</title>
+
+  <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap-responsive.css">
+  -->
+  <link rel="stylesheet" href="../../vendor/google-code-prettify/src/prettify.css">
+  <link rel="stylesheet" href="./css/main.css"></head>
+<body onload="prettyPrint()">
+  <div class="marketing">
+    <h2>AngularJS Exmaple - Controller</h2>
+    <!-- <button class="btn" type="button" onClick="bootstrap();" title="Click this button to bootstrap your application.">Bootstrap</button> -->
+  </div>
+
+  <div class="container" ng-controller="MyCtrl">
+    <div class="row">
+      <div class="span12">
+        <p>The <a href="http://docs.angularjs.org/api/ng.directive:ngController">ngController</a> directive attaches a controller class to the view. This is a key aspect of how angular supports the principles behind the Model-View-Controller design pattern.</p>
+        <p>
+          When we develop a web application, we need to get data from server and response to user's interaction, aslo need to implement our business logic, all those stuff we put it in Controller.
+        </p>
+        <p>
+          This example, we will show:
+        </p>
+        <ol>
+          <li>How to create a controller</li>
+          <li>How to update view's data</li>
+          <li>How to response user's interaction</li>
+        </ol>
+        <p>And we will implement</p>
+        <ol>
+          <li>Who should be said hello is defined in controller</li>
+          <li>Add a button - Greeting, when user click this show the text get from server</li>
+        </ol>
+        <hr/>
+        <ol>
+          <li>1+1 = {{1+1}}</li>
+          <li>2*3 = {{2*3}}</li>
+          <li>Name: {{'Blithe'+ ' Xu'}}</li>
+          <li>
+            <div>{{'Hello, '+ who}}</div>
+          </li>
+          <li>
+            <button type="button" class="btn" ng-click="greeting()">Greeting</button>
+            <small ng-bind="status"></small>
+          </li>
+        </ol>
+
+    </div>
+  </div>
+
+  <script src="../../vendor/angular/angular.js"></script>
+  <script src="../../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../../vendor/jquery/jquery.js"></script>
+  <script src="../../vendor/bootstrap/docs/assets/js/bootstrap.js"></script>
+  <script src="../../vendor/google-code-prettify/src/prettify.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
