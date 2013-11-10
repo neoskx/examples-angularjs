@@ -10,7 +10,7 @@ function ExpressionsCtrl($scope) {
 		console.log("%s", $scope.attrName);
 		console.log("%s", $scope.attrValue);
 		$scope[$scope.attrName] = $scope.attrValue;
-		if (Number($scope.attrValue)!== NaN) {
+		if (!isNaN(Number($scope.attrValue))) {
 			console.log("Number");
 			$scope.attributes[$scope.attrName] = Number($scope.attrValue);
 			$scope[$scope.attrName] = Number($scope.attrValue);
