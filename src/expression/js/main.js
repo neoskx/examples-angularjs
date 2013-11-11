@@ -3,8 +3,6 @@ function ExpressionsCtrl($scope) {
 
 	$scope.expressions = [];
 
-	$scope.x=0;
-
 	$scope.addAttribute = function() {
 		console.group("AddAttribute");
 		console.log("%s", $scope.attrName);
@@ -27,12 +25,30 @@ function ExpressionsCtrl($scope) {
 	};
 
 	$scope.addExpression = function(exp) {
-		console.info(exp);
+		console.group("addExpression, exp=%s", exp);
+		var scope = $scope;
 		var value = $scope.$eval(exp);
-		var obj = {
-			exp: exp,
-			value: value
-		};
-		$scope.expressions.push(obj);
+		$scope.$watch(function(){
+			return $scope.$eval(exp);
+		}, function(newValue, olderValue){
+			console.log("%o", arguments);
+			var obj = {
+				exp: exp,
+				value: newValue
+			};
+			var bExist = false;
+			for(var i = 0; i<$scope.expressions.length;i++){
+				console.log('$scope.expresions[i].exp = %s',$scope.expressions[i].exp);
+				console.log('exp = %s', exp);
+				if($scope.expressions[i].exp == exp){
+					$scope.expressions[i] = obj;
+					bExist = true;
+				}
+			}
+			if(!bExist) {
+				$scope.expressions.push(obj);
+			}
+		});
+		console.groupEnd();
 	};
 }
