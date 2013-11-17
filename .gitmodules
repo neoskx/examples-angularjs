@@ -1,0 +1,3 @@
+[submodule "angularjs-examples"]
+	path = angularjs-examples
+	url = https://github.com/shaoke/angularjs-examples.git
