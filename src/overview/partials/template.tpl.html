@@ -1,0 +1,15 @@
+<div>
+	<input type="number" ng-model="value1"/><br/>
+	<input type="number" ng-model="value2"/><br/>
+	<ul class="inline">
+		<li><button class="btn" type="button" ng-click="plus()">+</button></li>
+		<li><button class="btn" type="button" ng-click="minus()">-</button></li>
+		<li><button class="btn" type="button" ng-click="times()">*</button></li>
+		<li><button class="btn" type="button" ng-click="divide()">/</button></li>
+	</ul>
+	<div class="alert alert-success">
+		<label>Result:</label>
+		<!-- <p>{{value1+value2}}</p> -->
+		<p>{{result}}</p>
+	</div>
+</div>

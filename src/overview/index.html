@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <title>Angular Exmaple - Angular Overview</title>
+
+    <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap-responsive.css"> -->
+    <link rel="stylesheet" href="../../vendor/google-code-prettify/src/prettify.css">
+    <link rel="stylesheet" href="./css/main.css">
+    
+  </head>
+  <body onload="prettyPrint()">
+    <div class="marketing">
+      <h2>Application Template</h2>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h2>Template</h2>
+          <div ng-include="'partials/template.tpl.html'">
+          </div>
+          <h2>Directives</h2>
+          <div calculator></div>
+          <h2>Model</h2>
+          <div ng-controller="ExampleCtrl">
+            <p>{{name}}</p>
+            <p>{{age}}</p>
+            <input type="text" ng-model="phone"/>
+          </div>
+          <h2>Scope</h2>
+          <div ng-controller="ExampleCtrl">
+            <input type="text" ng-model="phone"/>
+            <p>{{phone}}</p>
+          </div>
+          <h2>Expressions</h2>
+          <div ng-controller="ExampleCtrl">
+            <p>{{1+2}}</p>
+            <p>{{2*3}}</p>
+            <button class="btn" ng-click="sayHello()">Alert</button>
+          </div>
+          <h2>Compiler</h2>
+          <div>
+          </div>
+          <h2>Filter</h2>
+          <div ng-controller="ExampleCtrl">
+            {{timestap | date:'yyyy-MM-dd HH:mm:ss Z'}}
+          </div>
+          <h2>Data Binding</h2>
+          <input type="text" ng-model="name"/>
+          <p>{{'Hello, '+name}}</p>
+        </div>
+      </div>
+    </div>
+  
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../../vendor/jquery/jquery.js"></script>
+    <script src="../../vendor/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <script src="../../vendor/google-code-prettify/src/prettify.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
