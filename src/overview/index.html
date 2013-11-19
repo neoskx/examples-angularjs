@@ -1,5 +1,6 @@
 <!doctype html>
 <html ng-app="MyApp">
+<!-- <html ng-app=""> -->
   <head>
     <title>Angular Exmaple - Angular Overview</title>
 
@@ -20,35 +21,56 @@
           <h2>Template</h2>
           <div ng-include="'partials/template.tpl.html'">
           </div>
-          <h2>Directives</h2>
+
+
+          <h2>Directives1</h2>
           <div calculator></div>
+
+          <h2>Directives2</h2>
+          <div calculator></div>
+          
+          <h2>Directives3</h2>
+          <div calculator></div>
+
+          
           <h2>Model</h2>
           <div ng-controller="ExampleCtrl">
             <p>{{name}}</p>
             <p>{{age}}</p>
             <input type="text" ng-model="phone"/>
           </div>
+
+
           <h2>Scope</h2>
           <div ng-controller="ExampleCtrl">
             <input type="text" ng-model="phone"/>
             <p>{{phone}}</p>
           </div>
+
+
           <h2>Expressions</h2>
           <div ng-controller="ExampleCtrl">
             <p>{{1+2}}</p>
             <p>{{2*3}}</p>
             <button class="btn" ng-click="sayHello()">Alert</button>
           </div>
+
+
           <h2>Compiler</h2>
           <div>
           </div>
+
+
           <h2>Filter</h2>
           <div ng-controller="ExampleCtrl">
             {{timestap | date:'yyyy-MM-dd HH:mm:ss Z'}}
           </div>
+          
+
           <h2>Data Binding</h2>
           <input type="text" ng-model="name"/>
-          <p>{{'Hello, '+name}}</p>
+          <!-- <p>{{'Hello, '+name}}</p> -->
+          <p ng-bind="'Hello, '+name"></p>
           
           <h2>Controller</h2>
           <div ng-controller="PersonCtrl">
@@ -71,6 +93,12 @@
           </div>
 
           <h2>Service</h2>
+
+          <div ng-controller="MoneyCtrl">
+            <input type="number" placeholder="Input the money" ng-model="p1">
+            <input type="number" placeholder="Input the money" ng-model="p2">
+            <button type="button" class="btn" ng-click="tellMe()">Tell Me how much</button>
+          </div>
         </div>
       </div>
     </div>

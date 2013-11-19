@@ -5,7 +5,7 @@ angular.module('MyApp',[])
 // 		// name: '',
 // 		// priority: 1,
 // 		// terminal: true,
-// 		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+// 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 // 		controller: function($scope, $element, $attrs) {
 // 			$scope.result = 'Please input number.';
 // 			$scope.plus = function(){
@@ -94,6 +94,7 @@ function ExampleCtrl($scope) {
 	$scope.name = "SomePerson";
 	$scope.age = "20";
 	$scope.phone = "12345678901";
+
 	$scope.sayHello = function() {
 		alert("Hello, World!");
 	};
@@ -102,13 +103,42 @@ function ExampleCtrl($scope) {
 		$scope.timestap = new Date().getTime();
 		$scope.$apply();
 	}, 1000);
+
+	
+}
+
+function MoneyCtrl($scope, calculatorService){
+	$scope.tellMe = function(){
+		var money = calculatorService.plus($scope.p1, $scope.p2);
+		alert(money);
+	}
 }
 
 
 function PersonCtrl($scope, $timeout){
 	$scope.beSend = false;
+
+	$scope.getPersonInfo = function(){
+		// Send request server
+		// Response the data
+		// 
+		$scope.person = {
+			name: "Some Person",
+			age: 23,
+			address: 'China'
+		};
+		// $scope.$apply();
+	};
+
 	$scope.send = function(){
+
+		// Send the data in person
+		// 
+		// Send sucessful
+		
 		$scope.beSend = true;
 		$scope.$apply();
-	}
+	};
+
+	$scope.getPersonInfo();
 }
