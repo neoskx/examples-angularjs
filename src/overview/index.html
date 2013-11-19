@@ -49,6 +49,28 @@
           <h2>Data Binding</h2>
           <input type="text" ng-model="name"/>
           <p>{{'Hello, '+name}}</p>
+          
+          <h2>Controller</h2>
+          <div ng-controller="PersonCtrl">
+            <form name="personFrom" novalidate>
+              <label>Name:</label>
+              <input type="text" ng-model="person.name" required/>
+              <label>Age</label>
+              <input type="number" ng-model="person.age" required/>
+              <label>Address</label>
+              <input type="text" ng-model="person.address" required/>
+              <div>
+                <button type="button" class="btn" ng-disabled="personFrom.$invalid" ng-click="send()">Send</button>
+                <button type="button" class="btn" ng-click="person={};beSend=false;">Reset</button>
+              </div>
+            </form>
+            <div ng-show="person.name&&beSend">
+              <pre>{{person | json}}
+              </pre>
+            </div>
+          </div>
+
+          <h2>Service</h2>
         </div>
       </div>
     </div>
