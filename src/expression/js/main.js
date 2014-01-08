@@ -1,4 +1,14 @@
 function ExpressionsCtrl($scope) {
+
+	function parseJSON(str){
+		try{
+			var obj = JSON.parse(str);
+			return obj;
+		}catch(e){
+			return undefined;
+		}
+	}
+
 	$scope.attributes = {};
 
 	$scope.expressions = [];
@@ -8,10 +18,13 @@ function ExpressionsCtrl($scope) {
 		console.log("%s", $scope.attrName);
 		console.log("%s", $scope.attrValue);
 		$scope[$scope.attrName] = $scope.attrValue;
+		var obj = parseJSON($scope.attrValue);
 		if (!isNaN(Number($scope.attrValue))) {
 			console.log("Number");
 			$scope.attributes[$scope.attrName] = Number($scope.attrValue);
 			$scope[$scope.attrName] = Number($scope.attrValue);
+		} else if(obj){
+			$scope[$scope.attrName] = obj;
 		} else {
 			console.log("String");
 			$scope.attributes[$scope.attrName] = $scope.attrValue;
