@@ -54,8 +54,9 @@ function ExpressionsCtrl($scope) {
 			$scope.attributes[$scope.attrName] = Number($scope.attrValue);
 			$scope[$scope.attrName] = Number($scope.attrValue);
 		} else if(bFunction){
-			$scope.attributes[$scope.attrName] = Function('return '+$scope.attrValue)();
-			$scope[$scope.attrName] = $scope.attributes[$scope.attrName];
+			var fn = Function('return '+$scope.attrValue)();
+			$scope[$scope.attrName] = fn;
+			$scope.attributes[$scope.attrName] = fn.toString();
 		} else if (obj) {
 			$scope[$scope.attrName] = obj;
 			$scope.attributes[$scope.attrName] = obj;
