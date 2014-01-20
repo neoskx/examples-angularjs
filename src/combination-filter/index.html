@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="">
+  <head>
+    <title>AngularJS Library - Combination Filter</title>
+
+    <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap-responsive.css"> -->
+    <link rel="stylesheet" href="../../vendor/google-code-prettify/src/prettify.css">
+    <link rel="stylesheet" href="./css/main.css">
+    
+  </head>
+  <body onload="prettyPrint()">
+    <div class="marketing">
+      <h2>Combination Filter</h2>
+    </div>
+
+    <hr/>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div ng-controller="MyCtrl">
+            <textarea ng-model="text" style="width:100%;height:60px;"> </textarea>
+            <br/>
+            <button class="btn" ng-click="parse()">Parse</button>
+            <pre>{{expressions|json}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../../vendor/jquery/jquery.js"></script>
+    <script src="../../vendor/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <script src="../../vendor/google-code-prettify/src/prettify.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
