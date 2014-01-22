@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="">
+<html ng-app="MyApp">
   <head>
     <title>AngularJS Library - Combination Filter</title>
 
@@ -20,10 +20,34 @@
       <div class="row">
         <div class="span12">
           <div ng-controller="MyCtrl">
-            <textarea ng-model="text" style="width:100%;height:60px;"> </textarea>
+<!--             <textarea ng-model="text" style="width:100%;height:60px;"> </textarea>
             <br/>
-            <button class="btn" ng-click="parse()">Parse</button>
-            <pre>{{expressions|json}}</pre>
+            <button class="btn" ng-click="parse()">Parse</button> -->
+            <label>Query Name</label>
+            <input type="text" ng-model="query"/>
+            <br/>
+            <label>Query status</label>
+            <input type="text" ng-model="from" placeholder="from"/>
+            <input type="text" ng-model="end" placeholder="end"/>
+            <br/>
+            <label>Query description</label>
+            <input type="text" ng-model="description"/>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Desciption</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="member in members | combinationFilter:this:'{name:query}&&(({status.state:status.state>=from}&&{status.state:status.state<=end})||{description:description})'">
+                  <td>{{member.name}}</td>
+                  <td>{{member.description}}</td>
+                  <td>{{member.status.state}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
