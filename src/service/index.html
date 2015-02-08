@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="serviceApp">
+  <head>
+    <title>AngularJS Exmaple - Service</title>
+
+    <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../../vendor/bootstrap/docs/assets/css/bootstrap-responsive.css"> -->
+    <link rel="stylesheet" href="../../vendor/google-code-prettify/src/prettify.css">
+    <link rel="stylesheet" href="./css/main.css">
+    
+  </head>
+  <body onload="prettyPrint()" ng-controller="MainCtrl as mainCtrl">
+    <div class="marketing">
+      <h2>AngularJS Exmaple - Service</h2>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <p>AngularJS provides three way to regster our own servie</p>
+          <ul>
+            <li>
+              <h5>Factory</h5>
+              <p>When you're using a <b>Factory</b> you create an object, add properties to it, then return that same object. When you pass this service into your controller, those properties on the object will now be available in that controller through your factory.</p>
+              <button type="button" class="btn" ng-click="mainCtrl.alert()">Alert</button>
+            </li>
+            <li>
+              <h5>Service</h5>
+              <p>When you're using <b>Service</b>, it's instantiated with the <code>new</code> keyword. Because of that, you'll add properties to <code>this</code> and the service will return <code>this</code>. When you pass the service into your controller, those properties on <code>this</code> will now be available on that controller through your service.</p>
+            </li>
+            <li>
+              <h5>Provider</h5>
+              <p>Providers are the only service you can pass into your .config() function. Use a provider when you want to provide module-wide configuration for your service object before making it available.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../../vendor/jquery/jquery.js"></script>
+    <script src="../../vendor/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <script src="../../vendor/google-code-prettify/src/prettify.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/calculateFactory.js"></script>
+    <script src="./js/calculateService.js"></script>
+    <script src="./js/calculateProvider.js"></script>
+  </body>
+</html>

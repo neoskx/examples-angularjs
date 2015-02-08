@@ -1,4 +1,6 @@
-function ExpressionsCtrl($scope) {
+function ExpressionsCtrl($scope, $locale) {
+
+	console.info($locale);
 
 	function parseJSON(str) {
 		try {
